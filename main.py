@@ -12,7 +12,7 @@ options.add_argument("start-maximized")
 # Chrome is controlled by automated test software
 options.add_experimental_option("excludeSwitches", ["enable-automation"])
 options.add_experimental_option('useAutomationExtension', False)
-s = Service('E:\\Equipment\\software\\driver\\web driver\\chrome driver\\chromedriver.exe')
+s = Service('driver\\chromedriver.exe')
 driver = webdriver.Chrome(service=s, options=options)
 # Selenium Stealth settings
 stealth(driver,
@@ -49,8 +49,10 @@ if __name__ == '__main__':
     fValue = driver.find_element(By.XPATH, fromLoc)
     fValue.send_keys("Singapore")
     actions.key_down(Keys.DOWN).key_up(Keys.UP).key_down(Keys.ENTER).key_up(Keys.ENTER).perform()
-    driver.implicitly_wait(1)
+    driver.implicitly_wait(2)
     tValue = driver.find_element(By.XPATH, toLoc)
+    tValue.click()
+    driver.implicitly_wait(1)
     tValue.send_keys('Bangkok')
     actions.key_down(Keys.DOWN).key_up(Keys.DOWN).perform()
     dValue = driver.find_element(By.XPATH, date)
